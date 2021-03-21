@@ -6,9 +6,10 @@ export class Note {
 
     generateNote() {
         this._note = this._getTemplate();
-
         this._note.querySelector('.note__title').textContent = this._title;
         this._note.querySelector('.note__message').textContent = this._message;
+
+        this._setEventListeners();
 
         return this._note;
     }
@@ -20,5 +21,15 @@ export class Note {
             .cloneNode(true);
 
         return noteTemplate;
+    }
+
+    _handleDelete() {
+        this._note.remove();
+    }
+
+    _setEventListeners() {
+        this._note.querySelector('.note__delete').addEventListener('click', () => {
+            this._handleDelete();
+        });
     }
 }

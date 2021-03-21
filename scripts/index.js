@@ -14,4 +14,6 @@ noteForm.addEventListener('submit', event => {
 
     const note = new Note(title, message);
     notesWrapper.append(note.generateNote());
+
+    noteForm.reset();
 });
