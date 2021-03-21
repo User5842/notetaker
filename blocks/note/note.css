@@ -1,0 +1,6 @@
+@import url(./__delete/note__delete.css);
+
+.note {
+    border: 1px solid purple;
+    padding: 1rem;
+}

@@ -1,0 +1,5 @@
+.notes {
+    display: grid;
+    gap: 1rem;
+    grid: auto / repeat(3, 1fr);
+}
