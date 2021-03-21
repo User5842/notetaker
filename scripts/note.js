@@ -4,9 +4,10 @@ import { Storage } from './storage.js';
  * Note class to manage business logic of a Note.
  */
 export class Note {
-    constructor(title, message, id = uuidv4()) {
+    constructor(title, message, id = uuidv4(), date = null) {
         this._title = title;
         this._message = message;
+        this._date = date || new Date().toJSON().slice(0, 10).replace(/-/g,'/');
         this._id = id;
     }
 
@@ -18,7 +19,9 @@ export class Note {
      */
     generateNote() {
         this._note = this._getTemplate();
+
         this._note.querySelector('.note__title').textContent = this._title;
+        this._note.querySelector('.note__date').textContent = this._date;
         this._note.querySelector('.note__message').textContent = this._message;
 
         this._setEventListeners();
@@ -35,7 +38,8 @@ export class Note {
         return {
             title: this._title,
             message: this._message,
-            id: this._id
+            id: this._id,
+            date: this._date
         };
     }
 
