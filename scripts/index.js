@@ -1,4 +1,5 @@
 import { Note } from './note.js';
+import { Storage } from './storage.js';
 
 // Wrappers
 const notesWrapper = document.querySelector('.notes');
@@ -12,8 +13,19 @@ noteForm.addEventListener('submit', event => {
     const title = noteForm.elements['title'].value;
     const message = noteForm.elements['message'].value;
 
+    Storage.set({ title, message });
+
     const note = new Note(title, message);
     notesWrapper.append(note.generateNote());
 
     noteForm.reset();
 });
+
+if (Storage.getNotes()) {
+    const notes = Storage.getNotes();
+
+    notes.forEach(note => {
+        const newNote = new Note(note.title, note.message);
+        notesWrapper.append(newNote.generateNote());
+    });
+}
