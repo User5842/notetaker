@@ -13,7 +13,7 @@ noteForm.addEventListener('submit', event => {
     const title = noteForm.elements['title'].value;
     const message = noteForm.elements['message'].value;
 
-    Storage.set({ title, message });
+    Storage.addNote({ title, message });
 
     const note = new Note(title, message);
     notesWrapper.append(note.generateNote());

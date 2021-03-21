@@ -1,3 +1,5 @@
+import { Storage } from './storage.js';
+
 /**
  * Note class to manage business logic of a Note.
  */
@@ -42,6 +44,7 @@ export class Note {
      * Handles the delete event on a Note.
      */
     _handleDelete() {
+        Storage.deleteNote(this._title);
         this._note.remove();
     }
 
