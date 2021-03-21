@@ -11,6 +11,19 @@
     <header class="header">
         <h1 class="header__title">notetaker</h1>
     </header>
+    <section class="form">
+        <form>
+            <div>
+                <label class="form__label" for="title">Note title</label>
+                <input id="title" name="title" type="text" required>
+            </div>
+            <div>
+                <label class="form__label" for="message">Note message</label>
+                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            </div>
+            <button type="submit">Create Note</button>
+        </form>
+    </section>
     <section class="notes">
         <div class="note">
             <h2 class="note__title">My First Note!</h2>
