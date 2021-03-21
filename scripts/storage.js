@@ -22,6 +22,16 @@ export class Storage {
         }
     }
 
+    static editNote(id, title, message) {
+        if (this.getNotes()) {
+            const notes = this.getNotes();
+            const index = notes.findIndex(note => note.id === id);
+            notes[index].title = title;
+            notes[index].message = message;
+            localStorage.setItem('notes', JSON.stringify(notes));
+        }
+    }
+
     static getNotes() {
         return JSON.parse(localStorage.getItem('notes'));
     }

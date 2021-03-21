@@ -25,7 +25,7 @@ if (Storage.getNotes()) {
     const notes = Storage.getNotes();
 
     notes.forEach(note => {
-        const newNote = new Note(note.title, note.message);
+        const newNote = new Note(note.title, note.message, note.id);
         notesWrapper.append(newNote.generateNote());
     });
 }

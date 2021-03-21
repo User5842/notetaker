@@ -4,10 +4,10 @@ import { Storage } from './storage.js';
  * Note class to manage business logic of a Note.
  */
 export class Note {
-    constructor(title, message) {
+    constructor(title, message, id = uuidv4()) {
         this._title = title;
         this._message = message;
-        this._id = uuidv4();
+        this._id = id;
     }
 
     /**
@@ -70,6 +70,14 @@ export class Note {
     _handleEdit(editable) {
         this._note.querySelector('.note__title').contentEditable = editable;
         this._note.querySelector('.note__message').contentEditable = editable;
+
+        if (!editable) {
+            Storage.editNote(
+                this._id,
+                this._note.querySelector('.note__title').textContent,
+                this._note.querySelector('.note__message').textContent
+            );
+        }
     }
 
     /**
