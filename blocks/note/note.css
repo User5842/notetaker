@@ -1,4 +1,7 @@
+@import url(./__buttons/note__buttons.css);
 @import url(./__delete/note__delete.css);
+@import url(./__edit/note__edit.css);
+@import url(./__save/note__save.css);
 
 .note {
     border: 1px solid purple;
