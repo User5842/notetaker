@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
+    <script src="./scripts/index.js" type="module"></script>
     <title>notetaker</title>
 </head>
 <body class="body">
@@ -24,36 +25,13 @@
             <button type="submit">Create Note</button>
         </form>
     </section>
-    <section class="notes">
-        <div class="note">
-            <h2 class="note__title">My First Note!</h2>
-            <hr>
-            <p class="note__message">This is the message of my first note! Woohoo!</p>
-            <button class="note__delete">Delete Note</button>
-        </div>
-        <div class="note">
-            <h2 class="note__title">My Second Note!</h2>
-            <hr>
-            <p class="note__message">Things are starting to get real fun over here!</p>
-        </div>
-        <div class="note">
-            <h2 class="note__title">My First Note!</h2>
-            <hr>
-            <p class="note__message">This is the message of my first note! Woohoo!</p>
-            <button class="note__delete">Delete Note</button>
-        </div>
-        <div class="note">
-            <h2 class="note__title">My Second Note!</h2>
-            <hr>
-            <p class="note__message">Things are starting to get real fun over here!</p>
-        </div>
-    </section>
-    <!-- <template id="note-template">
+    <section class="notes"></section>
+    <template id="note__template">
         <div class="note">
             <h2 class="note__title"></h2>
             <hr>
             <p class="note__message"></p>
         </div>
-    </template> -->
+    </template>
 </body>
 </html>
