@@ -3,6 +3,8 @@
  */
 export class Storage {
     static addNote(note) {
+        note = note.getNoteProperties();
+
         if (this.getNotes()) {
             const notes = [...this.getNotes(), note];
             localStorage.setItem('notes', JSON.stringify(notes));
@@ -11,10 +13,10 @@ export class Storage {
         }
     }
 
-    static deleteNote(title) {
+    static deleteNote(id) {
         if (this.getNotes()) {
             let notes = this.getNotes();
-            const index = notes.findIndex(note => note.title === title);
+            const index = notes.findIndex(note => note.id === id);
             notes.splice(index, 1);
             localStorage.setItem('notes', JSON.stringify(notes));
         }

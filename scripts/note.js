@@ -7,6 +7,7 @@ export class Note {
     constructor(title, message) {
         this._title = title;
         this._message = message;
+        this._id = uuidv4();
     }
 
     /**
@@ -23,6 +24,19 @@ export class Note {
         this._setEventListeners();
 
         return this._note;
+    }
+
+    /**
+     * Accessor for Note properties.
+     * 
+     * @returns An object consisting of this Notes properties.
+     */
+    getNoteProperties() {
+        return {
+            title: this._title,
+            message: this._message,
+            id: this._id
+        };
     }
 
     /**
@@ -44,7 +58,7 @@ export class Note {
      * Handles the delete event on a Note.
      */
     _handleDelete() {
-        Storage.deleteNote(this._title);
+        Storage.deleteNote(this._id);
         this._note.remove();
     }
 

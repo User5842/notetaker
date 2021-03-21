@@ -13,9 +13,9 @@ noteForm.addEventListener('submit', event => {
     const title = noteForm.elements['title'].value;
     const message = noteForm.elements['message'].value;
 
-    Storage.addNote({ title, message });
-
     const note = new Note(title, message);
+    Storage.addNote(note);
+
     notesWrapper.append(note.generateNote());
 
     noteForm.reset();
