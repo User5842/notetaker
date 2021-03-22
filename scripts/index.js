@@ -1,31 +1,35 @@
+import { noteForm, notesWrapper } from './elements.js';
 import { Note } from './note.js';
 import { Storage } from './storage.js';
 
-// Wrappers
-const notesWrapper = document.querySelector('.notes');
+function appendNote(note) {
+    notesWrapper.append(note.generateNote());
+}
 
-// Form elements
-const noteForm = document.forms['form'];
-
-noteForm.addEventListener('submit', event => {
-    event.preventDefault();
-
+function createNote() {
     const title = noteForm.elements['title'].value;
     const message = noteForm.elements['message'].value;
-
     const note = new Note(title, message);
+
     Storage.addNote(note);
 
-    notesWrapper.append(note.generateNote());
+    return note;
+}
 
+function createLocalStorageNote(note) {
+    return new Note(note.title, note.message, note.id, note.date);
+}
+
+function handleNoteSubmission(event) {
+    event.preventDefault();
+    appendNote(createNote());
     noteForm.reset();
-});
+}
+
+noteForm.addEventListener('submit', handleNoteSubmission);
 
 if (Storage.getNotes()) {
-    const notes = Storage.getNotes();
-
-    notes.forEach(note => {
-        const newNote = new Note(note.title, note.message, note.id, note.date);
-        notesWrapper.append(newNote.generateNote());
-    });
+    Storage
+        .getNotes()
+        .forEach(note => appendNote(createLocalStorageNote(note)));
 }
