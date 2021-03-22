@@ -87,6 +87,16 @@ export class Note {
     }
 
     /**
+     * Helper method used to set the contentEditable attribute of an element.
+     * 
+     * @param {editable: String} param0 Object containing editable information. 
+     */
+     _setContentEditable({ editable }) {
+        this._note.querySelector('.note__title').contentEditable = editable;
+        this._note.querySelector('.note__message').contentEditable = editable;
+    }
+
+    /**
      * Helper method used to set event listeners of a Note.
      */
     _setEventListeners() {
@@ -102,14 +112,4 @@ export class Note {
             this._handleSave();
         });
     }
-
-    /**
-     * Helper method used to set the contentEditable attribute of an element.
-     * 
-     * @param {editable: String} param0 Object containing editable information. 
-     */
-    _setContentEditable({ editable }) {
-        this._note.querySelector('.note__title').contentEditable = editable;
-        this._note.querySelector('.note__message').contentEditable = editable;
-    } 
 }
