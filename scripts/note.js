@@ -68,20 +68,22 @@ export class Note {
 
     /**
      * Handles the edit functionality of a Note.
-     * 
-     * @param {Boolean} editable Indicates if the element is editable.
      */
-    _handleEdit(editable) {
-        this._note.querySelector('.note__title').contentEditable = editable;
-        this._note.querySelector('.note__message').contentEditable = editable;
+    _handleEdit() {
+        this._setContentEditable({ editable: true });
+    }
 
-        if (!editable) {
-            Storage.editNote(
-                this._id,
-                this._note.querySelector('.note__title').textContent,
-                this._note.querySelector('.note__message').textContent
-            );
-        }
+    /**
+     * Handles the save functionality of a Note.
+     */
+    _handleSave() {
+        this._setContentEditable({ editable: false });
+
+        Storage.editNote(
+            this._id,
+            this._note.querySelector('.note__title').textContent,
+            this._note.querySelector('.note__message').textContent
+        );
     }
 
     /**
@@ -93,11 +95,21 @@ export class Note {
         });
 
         this._note.querySelector('.note__edit').addEventListener('click', () => {
-            this._handleEdit(true);
+            this._handleEdit();
         });
 
         this._note.querySelector('.note__save').addEventListener('click', () => {
-            this._handleEdit(false);
+            this._handleSave();
         });
     }
+
+    /**
+     * Helper method used to set the contentEditable attribute of an element.
+     * 
+     * @param {editable: String} param0 Object containing editable information. 
+     */
+    _setContentEditable({ editable }) {
+        this._note.querySelector('.note__title').contentEditable = editable;
+        this._note.querySelector('.note__message').contentEditable = editable;
+    } 
 }
